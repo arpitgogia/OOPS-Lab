@@ -4,17 +4,14 @@ class A {
 public: 
   	int i; 
 };
-
 class B : virtual public A { 
 public: 
   	int j; 
 };
-
 class C: virtual public A { 
 public: 
   	int k; 
 };
-
 class D: public B, public C { 
 public: 
 	int sum; 

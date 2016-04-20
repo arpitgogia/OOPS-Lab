@@ -4,7 +4,7 @@ using namespace std;
 class Vector {
 	int components;
 public:
-	vector<int> _vector;
+	vector<float> _vector;
 	Vector(int components) {
 		this->components = components;
 		this->_vector.resize(components);
@@ -17,6 +17,11 @@ public:
 				cout << ",";
 		}
 		cout << ")\n";
+	}
+	void Modify() {
+		cout << "Enter new vector\n";
+		for (int i = 0; i < components; i++)
+			cin >> this -> _vector[i]; 
 	}
 	Vector operator + (const Vector &v) {
 		if (this->components != v.components) {
@@ -44,8 +49,36 @@ int main() {
 	cout << "Enter the components\n";
 	for (int i = 0; i < components; i++)
 		cin >> b->_vector[i]; 
-	Vector c = *a + *b;
-	if(c._vector.size() != 0)
-		cout << "Addition Vector : ", c.Display();
+	char ch = 'y';
+	while(ch == 'y') {
+		cout << "1. Modify a vector\n" << "2. Display a vector\n" << "3. Add the vectors\n";
+		cin >> ch;
+		switch(ch) {
+			case '1':
+				cout << "Which Vector A/B ?";
+				char c1;
+				cin >> c1;
+				if(c1 == 'A' || c1 == 'a') 
+					a -> Modify();
+				else
+					b -> Modify();
+				break;
+			case '2':
+				cout << "Which Vector A/B ?";
+				cin >> c1;
+				if(c1 == 'A' || c1 == 'a') 
+					a -> Display();
+				else
+					b -> Display();
+				break;
+			case '3':
+				Vector c = *a + *b;
+				if(c._vector.size() != 0)
+					cout << "Addition Vector : ", c.Display();
+				break;
+		}
+		cout << "Continue (y/n)?\n";
+		cin >> ch;
+	}
 	return 0;
 }

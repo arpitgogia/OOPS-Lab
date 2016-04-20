@@ -15,7 +15,7 @@ public:
 	}
 };
 int main() {
-	Coordinate c1, c2(10, 12);
+	Coordinate c1, *c2 = new Coordinate(10, 12);
 	cout << "The above objects have been initialised using a dynamic constructor\n";
 	return 0;
 }

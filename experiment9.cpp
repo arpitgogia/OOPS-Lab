@@ -7,7 +7,7 @@ class Student {
 	string name;
 	int semester;
 	int marks[6], total;
-	void write_student(fstream &fs) {
+	void write_student(ofstream &fs) {
 		fs << "Name : " << name << "\n";
 		fs << "Semester : " << semester << "\n";
 		fs << "Marks : (";
@@ -31,20 +31,20 @@ public:
 			cin >> marks[i], total += marks[i];
 	}
 	void write() {
-		fstream fs;
-		fs.open("Student.dat", ios::binary | ios::out);
+		ofstream fs;
+		fs.open("Student.dat", ios::binary | ofstream::app);
 		write_student(fs);
 		fs.close();
 		int min_marks = *min_element(marks, marks + 6);
 		if (min_marks >= 40) {
-			fstream pass_fs;
-			pass_fs.open("Passed.dat", ios::binary | fstream::app);
+			ofstream pass_fs;
+			pass_fs.open("Passed.dat", ios::binary | ofstream::app);
 			write_student(pass_fs);
 			pass_fs.close();
 		}
 		else {
-			fstream fail_fs;
-			fail_fs.open("Failed.dat", ios::binary | fstream::app);
+			ofstream fail_fs;
+			fail_fs.open("Failed.dat", ios::binary | ofstream::app);
 			write_student(fail_fs);
 			fail_fs.close();
 		}

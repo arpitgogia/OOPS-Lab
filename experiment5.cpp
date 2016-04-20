@@ -3,7 +3,6 @@
 #include <cstdio>
 #include <cmath>
 using namespace std;
-
 class Account {
 protected:
     string account_no, name;
