@@ -6,8 +6,8 @@ class Vector {
 public:
 	vector<float> _vector;
 	Vector(int components) {
-		this->components = components;
-		this->_vector.resize(components);
+		this -> components = components;
+		this -> _vector.resize(components);
 	}
 	void Display() {
 		cout << "(";
@@ -48,7 +48,7 @@ int main() {
 	Vector* b = new Vector(components);
 	cout << "Enter the components\n";
 	for (int i = 0; i < components; i++)
-		cin >> b->_vector[i]; 
+		cin >> b -> _vector[i]; 
 	char ch = 'y';
 	while(ch == 'y') {
 		cout << "1. Modify a vector\n" << "2. Display a vector\n" << "3. Add the vectors\n";

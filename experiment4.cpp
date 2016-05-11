@@ -3,6 +3,7 @@ using namespace std;
 class Coordinate {
 	int x, y;	
 public:
+	static int test;
 	Coordinate() {
 		cout << "Default Constructor\n";
 		x = 0;

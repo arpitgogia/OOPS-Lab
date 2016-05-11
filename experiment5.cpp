@@ -82,78 +82,43 @@ int main() {
         cout << "Please enter Initial balance again : ";
         cin >> balance;
     }
-    if(type == 'S') {
-        SavingsAccount sAccount(account_no, name, balance);
-        char option = 'c';
-        while (option != '0') {
-            cout << "1. Deposit\n";
-            cout << "2. Withdraw\n";
-            cout << "3. Compute Interest\n";
-            cout << "4. Check for Minimum Balance\n";
-            cout << "5. Details\n";
-            cout << "0. Exit\n";
-            cin >> option;
-            switch(option) {
-                case '1' :
-                    cout << "Enter amount to deposit : ";
-                    cin >> amount;
-                    sAccount.updateBalance(amount);
-                    break;
-                case '2' : 
-                    cout << "Enter amount to withdraw : ";
-                    cin >> amount;
-                    sAccount.updateBalance(-amount);
-                    break;
-                case '3' : 
-                    cout << "Computing Interest...\n";
-                    sAccount.computeInterest();
-                    break;
-                case '4' : 
-                    sAccount.checkMinimum();
-                    break;
-                case '5' : 
-                    sAccount.details();
-                    break;
-                case '0' : 
-                    break;
-            }
-        }
-    }
-    else {
-        CurrentAccount cAccount(account_no, name, balance);
-        char option = 'c';
-        while (option != '0') {
-            cout << "1. Deposit\n";
-            cout << "2. Withdraw\n";
-            cout << "3. Compute Interest\n";
-            cout << "4. Check for Minimum Balance\n";
-            cout << "5. Details\n";
-            cout << "0. Exit\n";
-            cin >> option;
-            switch(option) {
-                case '1' :
-                    cout << "Enter amount to deposit : ";
-                    cin >> amount;
-                    cAccount.updateBalance(amount);
-                    break;
-                case '2' : 
-                    cout << "Enter amount to withdraw : ";
-                    cin >> amount;
-                    cAccount.updateBalance(-amount);
-                    break;
-                case '3' : 
-                    cout << "Computing Interest...\n";
-                    cAccount.computeInterest();
-                    break;
-                case '4' : 
-                    cAccount.checkMinimum();
-                    break;
-                case '5' :
-                    cAccount.details();
-                    break;
-                case '0' : 
-                    break;
-            }
+    Account* account;
+    if(type == 'S')
+        account = new SavingsAccount(account_no, name, balance);
+    else 
+        account = new CurrentAccount(account_no, name, balance);
+    char option = 'c';
+    while (option != '0') {
+        cout << "1. Deposit\n";
+        cout << "2. Withdraw\n";
+        cout << "3. Compute Interest\n";
+        cout << "4. Check for Minimum Balance\n";
+        cout << "5. Details\n";
+        cout << "0. Exit\n";
+        cin >> option;
+        switch(option) {
+            case '1' :
+                cout << "Enter amount to deposit : ";
+                cin >> amount;
+                account -> updateBalance(amount);
+                break;
+            case '2' : 
+                cout << "Enter amount to withdraw : ";
+                cin >> amount;
+                account -> updateBalance(-amount);
+                break;
+            case '3' : 
+                cout << "Computing Interest...\n";
+                account -> computeInterest();
+                break;
+            case '4' : 
+                account -> checkMinimum();
+                break;
+            case '5' : 
+                account -> details();
+                break;
+            case '0' : 
+                break;
         }
     }
 }
